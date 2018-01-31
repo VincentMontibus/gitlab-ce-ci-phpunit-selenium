@@ -62,3 +62,5 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # install selenium
 RUN pip install selenium==3.8.0
+
+#fingers crossed
