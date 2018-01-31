@@ -14,8 +14,8 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
-		python6.4 \
-		python3-pip
+	python3.6 \
+	python3-pip
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
