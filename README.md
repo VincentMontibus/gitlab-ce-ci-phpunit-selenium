@@ -1,0 +1,1 @@
+# gitlab-ce-ci-phpunit-selenium
