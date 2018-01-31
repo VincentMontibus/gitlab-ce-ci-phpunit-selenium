@@ -1,7 +1,7 @@
 FROM php:5.6-fpm
 
 # Install "curl", "libmemcached-dev", "libpq-dev", "libjpeg-dev",
-#         "libpng12-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev",
+#         "libpng12-dev", "libfreetype6-dev", "libssl-dev", "libmcrypt-dev"
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         git \
@@ -14,8 +14,6 @@ RUN apt-get update && \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
-	python3.4 \
-	python3-pip
 
 # Install the PHP mcrypt extention
 RUN docker-php-ext-install mcrypt
@@ -42,6 +40,9 @@ RUN pecl install zip && docker-php-ext-enable zip
 RUN curl -sS https://getcomposer.org/installer | php
 RUN mv composer.phar /usr/local/bin/composer
 
+# Installa Python and pip
+RUN apt-get update && apt-get install -y python python-pip
+
 # install google chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 RUN sh -c 'echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
@@ -62,5 +63,3 @@ ENV DBUS_SESSION_BUS_ADDRESS=/dev/null
 
 # install selenium
 RUN pip install selenium==3.8.0
-
-#fingers crossed
