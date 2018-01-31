@@ -32,8 +32,8 @@ RUN docker-php-ext-configure gd \
 RUN pecl channel-update pecl.php.net
 
 # Install Xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
-COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
+# RUN pecl install xdebug && docker-php-ext-enable xdebug
+# COPY ./xdebug.ini /usr/local/etc/php/conf.d/xdebug.ini
 
 # Install ZIP
 RUN pecl install zip && docker-php-ext-enable zip
