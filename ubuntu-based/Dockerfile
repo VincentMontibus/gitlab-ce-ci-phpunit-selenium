@@ -15,7 +15,7 @@ RUN apt-get install -y --no-install-recommends \
         libfreetype6-dev \
         libssl-dev \
         libmcrypt-dev \
-	python6.4 \
+	python \
 	python3-pip
 
 # Install the PHP mcrypt extention
