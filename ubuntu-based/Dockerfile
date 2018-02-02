@@ -18,8 +18,15 @@ RUN apt-get install -y --no-install-recommends \
 	python \
 	python3-pip
 
-# Install the PHP mcrypt extention
-RUN docker-php-ext-install mcrypt
+# Install the PHP gd library
+RUN docker-php-ext-configure gd \
+        --enable-gd-native-ttf \
+        --with-jpeg-dir=/usr/lib \
+        --with-freetype-dir=/usr/include/freetype2 && \
+    docker-php-ext-install gd
+    
+# Update pecl
+RUN pecl channel-update pecl.php.net
 
-# Install the PHP pdo_mysql extention
-RUN docker-php-ext-install pdo_mysql
+# Install Xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
